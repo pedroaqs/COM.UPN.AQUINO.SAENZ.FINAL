@@ -18,6 +18,11 @@ public class DuelistaAdapter extends RecyclerView.Adapter {
     public DuelistaAdapter(List<Duelista> duelistas) {
         this.duelistas = duelistas;
     }
+
+    public void setDuelistas(List<Duelista> duelistas) {
+        this.duelistas = duelistas;
+    }
+
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
