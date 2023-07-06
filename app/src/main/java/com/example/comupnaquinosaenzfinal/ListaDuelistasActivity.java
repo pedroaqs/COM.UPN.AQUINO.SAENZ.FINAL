@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.comupnaquinosaenzfinal.adapters.DuelistaAdapter;
 import com.example.comupnaquinosaenzfinal.entidades.Duelista;
@@ -58,4 +59,15 @@ public class ListaDuelistasActivity extends AppCompatActivity {
         List<Duelista> duelistasbd = duelistaRepository.getAllDuelistas();
         duelistaAdapter.setDuelistas(duelistasbd);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        // Cargar los duelistas en el onResume()
+        Toast.makeText(this, "Ejecutndo onResume", Toast.LENGTH_SHORT).show();
+        cargarData();
+    }
+
+
 }

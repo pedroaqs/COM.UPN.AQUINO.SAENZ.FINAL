@@ -9,18 +9,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.comupnaquinosaenzfinal.R;
+import com.example.comupnaquinosaenzfinal.entidades.Carta;
 import com.example.comupnaquinosaenzfinal.entidades.Duelista;
 
 import java.util.List;
 
-public class DuelistaAdapter extends RecyclerView.Adapter {
-    List<Duelista> duelistas;
-    public DuelistaAdapter(List<Duelista> duelistas) {
-        this.duelistas = duelistas;
+public class CartasAdapter  extends RecyclerView.Adapter {
+    List<Carta> cartas;
+    public CartasAdapter(List<Carta> cartas) {
+        this.cartas = cartas;
     }
 
-    public void setDuelistas(List<Duelista> duelistas) {
-        this.duelistas = duelistas;
+    public void setCartas(List<Carta> cartas) {
+        this.cartas = cartas;
         notifyDataSetChanged();
     }
 
@@ -29,17 +30,17 @@ public class DuelistaAdapter extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.item_duelista, parent, false);
-        DuelistaViewHolder viewHolder = new DuelistaViewHolder(view);
+        CartasAdapter.CartaViewHolder viewHolder = new CartasAdapter.CartaViewHolder(view);
 
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        Duelista duelista = duelistas.get(position);
+        Carta carta = cartas.get(position);
         View view = holder.itemView;
         TextView duelista_tv_nombre = view.findViewById(R.id.duelista_tv_nombre);
-        duelista_tv_nombre.setText(duelista.getNombre());
+        duelista_tv_nombre.setText(carta.getNombre());
         view.setOnClickListener(view1 -> {
 
         });
@@ -47,12 +48,12 @@ public class DuelistaAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return duelistas.size();
+        return cartas.size();
     }
 
-    public class  DuelistaViewHolder extends RecyclerView.ViewHolder {
+    public class  CartaViewHolder extends RecyclerView.ViewHolder {
 
-        public DuelistaViewHolder(@NonNull View itemView) {
+        public CartaViewHolder(@NonNull View itemView) {
             super(itemView);
         }
     }

@@ -34,11 +34,12 @@ public class Carta {
     }
 
     // Getters y setters
-    public int getIdAplicacion() {
+
+    public int getId_aplicacion() {
         return id_aplicacion;
     }
 
-    public void setIdAplicacion(int id_aplicacion) {
+    public void setId_aplicacion(int id_aplicacion) {
         this.id_aplicacion = id_aplicacion;
     }
 
