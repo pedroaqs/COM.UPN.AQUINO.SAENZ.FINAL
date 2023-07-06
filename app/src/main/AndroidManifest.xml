@@ -21,6 +21,9 @@
         android:theme="@style/Theme.COMUPNAQUINOSAENZFINAL"
         tools:targetApi="31">
         <activity
+            android:name=".DetlleCartaActivity"
+            android:exported="false" />
+        <activity
             android:name=".CrearCartaActivity"
             android:exported="false" />
         <activity

@@ -1,12 +1,14 @@
 package com.example.comupnaquinosaenzfinal;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.comupnaquinosaenzfinal.adapters.CartasAdapter;
 import com.example.comupnaquinosaenzfinal.entidades.Carta;
@@ -36,13 +38,18 @@ public class CartasDuelistaActivity extends AppCompatActivity {
         String duelistaJson = getIntent().getStringExtra("Duelista");
         duelista = new Gson().fromJson(duelistaJson, Duelista.class);
 
+        cartaRepository = new CartaRepository(CartasDuelistaActivity.this);
+
         tv_duelista = findViewById(R.id.tv_duelista);
         btn_nueva_carta = findViewById(R.id.btn_nueva_carta);
         btn_ver_mpa = findViewById(R.id.btn_ver_mpa);
         rv_cartas_duelista = findViewById(R.id.rv_cartas_duelista);
 
         tv_duelista.setText("Duelista "+duelista.getNombre());
+
+        rv_cartas_duelista.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         cartasAdapter = new CartasAdapter(new ArrayList<Carta>());
+        rv_cartas_duelista.setAdapter(cartasAdapter);
 
         // boton nuevo
         btn_nueva_carta.setOnClickListener(view -> {
@@ -71,7 +78,7 @@ public class CartasDuelistaActivity extends AppCompatActivity {
     }
 
     public void listCartasDuelista() {
-        List<Carta> cartasduelistabd = cartaRepository.getCartasByDuelistaId(duelista.getId());
+        List<Carta> cartasduelistabd = cartaRepository.getCartasByDuelistaId(duelista.getIdAplicacion());
         cartasAdapter.setCartas(cartasduelistabd);
     }
 

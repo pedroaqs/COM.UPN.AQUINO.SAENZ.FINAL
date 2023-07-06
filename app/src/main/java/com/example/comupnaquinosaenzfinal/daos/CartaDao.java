@@ -17,6 +17,9 @@ public interface  CartaDao {
     @Query("SELECT * FROM cartas WHERE nombre LIKE '%' || :nombre || '%' AND id_aplicacion_duelista = :idAplicacionDuelista")
     List<Carta> searchCartasByNameAndDuelistaId(String nombre, int idAplicacionDuelista);
 
+    @Query("SELECT * FROM cartas")
+    List<Carta> cartas();
+
     @Insert
     void insertCarta(Carta carta);
 

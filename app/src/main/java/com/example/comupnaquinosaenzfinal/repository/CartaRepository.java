@@ -52,4 +52,20 @@ public class CartaRepository {
     public Carta getCartaByIdAplicacion(int idAplicacion) {
         return cartaDao.getCartaByIdAplicacion(idAplicacion);
     }
+    public List<Carta> cartas() {
+        try {
+            return new AsyncTask<Void, Void, List<Carta>>() {
+                @Override
+                protected List<Carta> doInBackground(Void... voids) {
+                    return cartaDao.cartas();
+                }
+            }.execute().get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        return null;
+
+    }
 }
