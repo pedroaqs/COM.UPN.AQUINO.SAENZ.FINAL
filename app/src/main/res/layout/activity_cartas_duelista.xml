@@ -23,13 +23,13 @@
             android:id="@+id/btn_nueva_carta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="NUEVA CARTA" />
 
         <Button
             android:id="@+id/btn_ver_mpa"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="VER MAPA CARTAS" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_cartas_duelista"

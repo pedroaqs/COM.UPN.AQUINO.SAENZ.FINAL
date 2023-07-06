@@ -1,12 +1,14 @@
 package com.example.comupnaquinosaenzfinal.repository;
 
 import android.content.Context;
+import android.os.AsyncTask;
 
 import com.example.comupnaquinosaenzfinal.bd.AppDatabase;
 import com.example.comupnaquinosaenzfinal.daos.CartaDao;
 import com.example.comupnaquinosaenzfinal.entidades.Carta;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class CartaRepository {
     private CartaDao cartaDao;
@@ -17,7 +19,20 @@ public class CartaRepository {
     }
 
     public List<Carta> getCartasByDuelistaId(int idAplicacionDuelista) {
-        return cartaDao.getCartasByDuelistaId(idAplicacionDuelista);
+        try {
+            return new AsyncTask<Void, Void, List<Carta>>() {
+                @Override
+                protected List<Carta> doInBackground(Void... voids) {
+                    return cartaDao.getCartasByDuelistaId(idAplicacionDuelista);
+                }
+            }.execute().get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        return null;
+
     }
 
     public List<Carta> searchCartasByNameAndDuelistaId(String nombre, int idAplicacionDuelista) {
@@ -25,7 +40,13 @@ public class CartaRepository {
     }
 
     public void insertCarta(Carta carta) {
-        cartaDao.insertCarta(carta);
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                cartaDao.insertCarta(carta);
+                return null;
+            }
+        }.execute();
     }
 
     public Carta getCartaByIdAplicacion(int idAplicacion) {

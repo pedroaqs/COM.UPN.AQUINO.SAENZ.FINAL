@@ -65,7 +65,6 @@ public class ListaDuelistasActivity extends AppCompatActivity {
         super.onResume();
 
         // Cargar los duelistas en el onResume()
-        Toast.makeText(this, "Ejecutndo onResume", Toast.LENGTH_SHORT).show();
         cargarData();
     }
 

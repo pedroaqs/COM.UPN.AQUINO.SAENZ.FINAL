@@ -1,5 +1,7 @@
 package com.example.comupnaquinosaenzfinal.adapters;
 
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.comupnaquinosaenzfinal.R;
 import com.example.comupnaquinosaenzfinal.entidades.Carta;
 import com.example.comupnaquinosaenzfinal.entidades.Duelista;
+import com.google.gson.Gson;
 
 import java.util.List;
 
@@ -29,7 +32,7 @@ public class CartasAdapter  extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.item_duelista, parent, false);
+        View view = inflater.inflate(R.layout.item_carta, parent, false);
         CartasAdapter.CartaViewHolder viewHolder = new CartasAdapter.CartaViewHolder(view);
 
         return viewHolder;
@@ -39,10 +42,14 @@ public class CartasAdapter  extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Carta carta = cartas.get(position);
         View view = holder.itemView;
-        TextView duelista_tv_nombre = view.findViewById(R.id.duelista_tv_nombre);
-        duelista_tv_nombre.setText(carta.getNombre());
+        TextView tv_nombre_carta = view.findViewById(R.id.tv_nombre_carta);
+        tv_nombre_carta.setText(carta.getNombre());
         view.setOnClickListener(view1 -> {
-
+            //Intent intent= new Intent(view.getContext(), DetalleLibroActivity.class);
+            //Log.i("asd32", "Respuesta correcta por id------------ ");
+            //String libroJson = new Gson().toJson(libro);
+            //intent.putExtra("Libros",libroJson);
+            //view.getContext().startActivity(intent);
         });
     }
 
