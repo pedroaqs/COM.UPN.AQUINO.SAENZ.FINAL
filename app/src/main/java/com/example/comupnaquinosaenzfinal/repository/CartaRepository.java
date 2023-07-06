@@ -2,6 +2,7 @@ package com.example.comupnaquinosaenzfinal.repository;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.example.comupnaquinosaenzfinal.bd.AppDatabase;
 import com.example.comupnaquinosaenzfinal.daos.CartaDao;
@@ -61,8 +62,10 @@ public class CartaRepository {
                 }
             }.execute().get();
         } catch (InterruptedException e) {
+            Log.i("Error1", e.toString());
             e.printStackTrace();
         } catch (ExecutionException e) {
+            Log.i("Error2", e.toString());
             e.printStackTrace();
         }
         return null;

@@ -87,6 +87,7 @@ public class CartasDuelistaActivity extends AppCompatActivity {
         super.onResume();
 
         // carga carts on resume
+        Toast.makeText(this, "cargando data", Toast.LENGTH_SHORT).show();
         cargarData();
     }
 

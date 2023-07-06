@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.comupnaquinosaenzfinal.CartasDuelistaActivity;
+import com.example.comupnaquinosaenzfinal.DetlleCartaActivity;
 import com.example.comupnaquinosaenzfinal.R;
 import com.example.comupnaquinosaenzfinal.entidades.Carta;
 import com.example.comupnaquinosaenzfinal.entidades.Duelista;
@@ -45,11 +47,10 @@ public class CartasAdapter  extends RecyclerView.Adapter {
         TextView tv_nombre_carta = view.findViewById(R.id.tv_nombre_carta);
         tv_nombre_carta.setText(carta.getNombre());
         view.setOnClickListener(view1 -> {
-            //Intent intent= new Intent(view.getContext(), DetalleLibroActivity.class);
-            //Log.i("asd32", "Respuesta correcta por id------------ ");
-            //String libroJson = new Gson().toJson(libro);
-            //intent.putExtra("Libros",libroJson);
-            //view.getContext().startActivity(intent);
+            Intent intent= new Intent(view.getContext(), DetlleCartaActivity.class);
+            String cartaJson = new Gson().toJson(carta);
+            intent.putExtra("Carta",cartaJson);
+            view.getContext().startActivity(intent);
         });
     }
 
