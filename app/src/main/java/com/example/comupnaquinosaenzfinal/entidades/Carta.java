@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "cartas")
 public class Carta {
     @PrimaryKey(autoGenerate = true)
-    private int idAplicacion;
+    private int id_aplicacion;
     private int id;
     private String nombre;
     private int puntosAtaque;
@@ -35,11 +35,11 @@ public class Carta {
 
     // Getters y setters
     public int getIdAplicacion() {
-        return idAplicacion;
+        return id_aplicacion;
     }
 
-    public void setIdAplicacion(int idAplicacion) {
-        this.idAplicacion = idAplicacion;
+    public void setIdAplicacion(int id_aplicacion) {
+        this.id_aplicacion = id_aplicacion;
     }
 
     public int getId() {
