@@ -6,11 +6,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -117,6 +120,18 @@ public class CrearCartaActivity extends AppCompatActivity {
 
 
         if (requestCode == 1002 && resultCode == RESULT_OK) {
+
+            Uri selectedImage = data.getData();
+            String[] filePathColumn = { MediaStore.Images.Media.DATA };
+            Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
+            cursor.moveToFirst();
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            String picturePath = cursor.getString(columnIndex);
+            cursor.close(); // close cursor
+
+            Log.i("ImagenSIUUUU",picturePath);
+            rutaFoto = String.valueOf(picturePath);
+
             if (data != null) {
                 Uri imagenUri = data.getData();
                 rutaFoto = obtenerRutaImagen(imagenUri);
@@ -127,9 +142,11 @@ public class CrearCartaActivity extends AppCompatActivity {
         }
 
         if (rutaFoto != null) {
-            Picasso.get()
-                    .load(new File(rutaFoto))
-                    .into(imageView);
+            Bitmap bitmap = BitmapFactory.decodeFile(rutaFoto);
+            imageView.setImageBitmap(bitmap);
+            //Picasso.get()
+              //      .load(new File(rutaFoto))
+                //    .into(imageView);
         }
     }
 
